@@ -174,6 +174,28 @@ footer{background:#102D27;color:#D8E4DF;padding:52px 0 28px}
  .phone{width:280px;height:540px} .section{padding:76px 0} .problem-grid,.trust-grid,.family-cards{grid-template-columns:1fr}
  .copy h3{font-size:32px} .product-row{margin:60px 0} .pro{padding:30px 20px} .foot{flex-direction:column}
 }
+</style><style>
+  .lang{position:relative;display:block;margin-right:8px}
+  .lang-btn{display:flex;align-items:center;gap:6px;background:#fff;border:1px solid rgba(18,59,49,.15);
+    border-radius:999px;padding:6px 10px;font:inherit;font-size:11px;font-weight:700;letter-spacing:.04em;
+    color:var(--green);cursor:pointer;line-height:1}
+  .lang-btn:hover{border-color:rgba(18,59,49,.3)}
+  .lang-flag{width:18px;height:12px;border-radius:2px;overflow:hidden;display:block;flex:none;
+    box-shadow:0 0 0 1px rgba(0,0,0,.07)}
+  .lang-flag svg{display:block}
+  .lang-chev{transition:transform .18s ease}
+  .lang.open .lang-chev{transform:rotate(180deg)}
+  .lang-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:150px;background:#fff;
+    border:1px solid rgba(18,59,49,.14);border-radius:14px;padding:5px;z-index:60;display:none;
+    box-shadow:0 18px 44px rgba(18,59,49,.18)}
+  .lang.open .lang-menu{display:block}
+  .lang-menu a{display:flex;align-items:center;gap:9px;padding:8px 11px;border-radius:9px;
+    font-size:12.5px;font-weight:600;color:#2C3A35;text-decoration:none;white-space:nowrap}
+  .lang-menu a:hover{background:rgba(18,59,49,.06)}
+  .lang-menu a.active{color:var(--green);background:rgba(18,59,49,.09)}
+  /* Le sélecteur était masqué sous 580 px : un visiteur sur téléphone n'avait
+     aucun moyen de changer de langue. Le bouton à drapeau tient dans la barre. */
+  @media(max-width:580px){.nav-actions .lang{display:block}}
 </style>
 <style>
   main h3{font-size:17px;color:var(--green);margin:34px 0 10px}
@@ -191,8 +213,8 @@ footer{background:#102D27;color:#D8E4DF;padding:52px 0 28px}
     <a href="/#pros">Professionnels</a><a href="/#confiance">Confiance</a>
   </div>
   <div class="nav-actions">
-    <div class="lang"><a href="/en/">EN</a><a href="/es/">ES</a><a href="/" class="active">FR</a><a href="/pt/">PT</a></div>
-    <a class="btn primary" href="/">Rejoindre la bêta</a>
+    <div class="lang" id="langPicker"><button type="button" class="lang-btn" onclick="basculerLangues(event)" aria-haspopup="true" aria-expanded="false" aria-label="Français"><span class="lang-flag"><svg viewBox="0 0 18 12" width="18" height="12" aria-hidden="true"><rect width="18" height="12" fill="#fff"/><rect width="6" height="12" fill="#0055A4"/><rect x="12" width="6" height="12" fill="#EF4135"/></svg></span><span>FR</span><svg class="lang-chev" viewBox="0 0 10 6" width="9" height="6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="lang-menu" role="menu"><a href="/en/" hreflang="en"><span class="lang-flag"><svg viewBox="0 0 18 12" width="18" height="12" aria-hidden="true"><rect width="18" height="12" fill="#fff"/><rect x="7.2" width="3.6" height="12" fill="#CE1124"/><rect y="4.2" width="18" height="3.6" fill="#CE1124"/></svg></span><span>English</span></a><a href="/es/" hreflang="es"><span class="lang-flag"><svg viewBox="0 0 18 12" width="18" height="12" aria-hidden="true"><rect width="18" height="12" fill="#AA151B"/><rect y="3" width="18" height="6" fill="#F1BF00"/></svg></span><span>Español</span></a><a href="/" class="active" hreflang="fr"><span class="lang-flag"><svg viewBox="0 0 18 12" width="18" height="12" aria-hidden="true"><rect width="18" height="12" fill="#fff"/><rect width="6" height="12" fill="#0055A4"/><rect x="12" width="6" height="12" fill="#EF4135"/></svg></span><span>Français</span></a><a href="/pt/" hreflang="pt"><span class="lang-flag"><svg viewBox="0 0 18 12" width="18" height="12" aria-hidden="true"><rect width="18" height="12" fill="#DA291C"/><rect width="7.2" height="12" fill="#046A38"/><circle cx="7.2" cy="6" r="2.5" fill="#FFE900" stroke="#046A38" stroke-width=".7"/></svg></span><span>Português</span></a></div></div>
+    <a class="btn primary" href="https://rferreirafr1409.github.io/Dualia/" rel="noopener">Rejoindre la bêta</a>
   </div>
 </nav>
 </header>
@@ -295,5 +317,26 @@ footer{background:#102D27;color:#D8E4DF;padding:52px 0 28px}
 <footer>
 <div class="wrap foot"><div><div class="brand"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAEAklEQVR4nO1aX0hTURz+7uipVmLkcBJusloslg5KzIfbU/pkSBD04OwhCWrRizMCRSJkvdRWEFkoRqQ+BKIYPt1828OSGqwaXVqspskMjSIx6cn1YHfteM+9bveeO838nnb+/r5v55x7vnvO5X4tL2ZQAKYScUTev0F8Jonp+TksLi9hJVNQFzKYOA57dpphs1jhrnSg/lA16pzugvvh8hUzEpnE0/BzpObTBQfRArulAmf5BpypP5l3m3XFiLMpBMcH8fpTQjdBLaipcsLf3ArXfvu6dVXFCLEX6B7u1T2N9MLEcehp8aHRc1y13g6lAiH2Al1D95kT04KVTCbLRU2QiZYpzqbQPdxrDDMd6B7uhTibUiynigmOD2741KJhJZNBcHxQsVwmZiQyuWGLPR+8/pTASGSSWiYT8zT83HBCeqHEkRAzlYgXbR/Rg9R8GlOJuCyfEBN5/6ZohPSCxpUQE59JMg8aOu9H6Lyfeb80roSY6fk5pgFDbX7whz3gD3sQamMriMaVELO4vMQsWKjND97lyaZ5F1tBNK6EAyh0b7nQeBoVpWWy/CP2g7CVlQMAuoZWN9+A1wfe5cHItVt4m/oga5P+voB+YSzv2DSuinYmHxx1uHDU4VIs7xrqhRCLZNMBrw+2svKs0FxEkyL6kb8YGnSJySUy9+1rNi2NTMDry+ZJv6cXvhAjY927T/UPKQRMxEy8CmPiZZjIk9ZMrqCwGEP7QJCo11TLMxND9WYs0D4QRFiMZdM0IaxhmBjgj6B3MYTfGS8EYDTN1ND+yHgREgwdmWJDlxjpCWYt3ae5D6lt7tNQK3SJiX4UAUDX00hqm/6+oIcKAEYjo7Z5qhnN3HYTr8LUOoVge81IiCZF9AmjAICHlzrRVMsT5WquuamWx8NLnQCAPmGUyZohzs1qO1o1dfKs8w6se/8u5GhSRIl5N+GagdWNU/z8EaeOncjWjyZFXHxwU1Pcl7fJww0mYoBVBy2R/PFzCSW7zABI1wyAKOsTRgtyymuxVgyzTbNfGEO/MIaBK9dRbTsAgO6aS3aZkUhPo+PxXSZTKxfMHUDbvRtUkyn9NtKjEdOs7uo5Zod/a980AbZCTByHqVtPyLzcxJ6dZiaBAONdM40rIcZmsTILBhjrmmlciTXjrnQwP5o1yjW7Kx2yPGJk6g9VGxLYCNC4EmLqnG7YLRVFI6QVdksF9c5TZmfO8g1FIaQHShxlYs7Un0RNldNwQlpRU+VUvLSlGk1/cytMHGcoKS0wcRz8zcqWiyrGtd+OnhYfrWhD0dPiU711VnwFaPQcR8B7eVOMkInjEPBeXve2+f/5DiAXW+ILjbXYEt/O/AvYPtDYrNgWs1mxpcT8BmiYui0XRuWVAAAAAElFTkSuQmCC" alt=""><span>Dualia</span></div><small>Deux maisons. Une seule histoire.</small></div><div><small>© 2026 Dualia · contact@dualia.app</small></div></div>
 </footer>
+<script>
+function basculerLangues(e){
+  e.preventDefault(); e.stopPropagation();
+  var p = document.getElementById('langPicker');
+  var ouvert = p.classList.toggle('open');
+  p.querySelector('.lang-btn').setAttribute('aria-expanded', ouvert ? 'true' : 'false');
+}
+document.addEventListener('click', function(e){
+  var p = document.getElementById('langPicker');
+  if (p && !p.contains(e.target)) {
+    p.classList.remove('open');
+    p.querySelector('.lang-btn').setAttribute('aria-expanded','false');
+  }
+});
+document.addEventListener('keydown', function(e){
+  if (e.key === 'Escape') {
+    var p = document.getElementById('langPicker');
+    if (p) { p.classList.remove('open'); p.querySelector('.lang-btn').setAttribute('aria-expanded','false'); }
+  }
+});
+</script>
 </body>
 </html>
